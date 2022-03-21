@@ -34,3 +34,5 @@ dependencies {
    * Img Url
 * A user should be able to see information about all the albums on the site.
 * A user should be able to add albums to the site from form in album.html
+
+## to run the app from CLI : ``./gradlew bootRun``
