@@ -10,7 +10,8 @@
     <li><a class="active" href="/">Home</a></li>
     <li><a href="/albums">Albums</a></li>
     <li><a href="/upperCase/hello">Capitalize</a></li>
-    <li style="float:right"><a href="/hello">Hello</a></li>
+    <li><a href="/songs">Songs</a></li>
+    <li class="hello" style="float:right"><a href="/hello">Hello</a></li>
 </ul>
 
 <div>
@@ -19,12 +20,14 @@
         <p th:text="${obj.artist}"></p>
         <p th:text="${obj.songCount}"></p>
         <p th:text="${obj.length}"></p>
-        <img th:src="${obj.imageUrl}" th:alt="${obj.title}"/>
 
+        <a th:href="'/albums/' + ${obj.id} + '/songs'" ><img th:src="${obj.imageUrl}" th:alt="${obj.title}"/></a>
     </div>
 </div>
 
-<h1>Add New Album</h1>
+
+<div>
+    <h1>Add New Album</h1>
 <form th:action="@{/add/album}"  method="POST">
     <p>Title: <input type="text" name="title"/></p>
     <p>Artist: <input type="text" name="artist"/></p>
@@ -33,5 +36,6 @@
     <p>Image URL: <input type="text"name="imageUrl"/></p>
     <p><input type="submit" value="Submit"/></p>
 </form>
+</div>
 </body>
 </html>

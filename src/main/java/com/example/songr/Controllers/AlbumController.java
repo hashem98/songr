@@ -15,11 +15,13 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-
 @Controller
 public class AlbumController {
     @Autowired
     private AlbumRepository albumRepository;
+
+
+
     /**
      *  for Lab11
      */
@@ -33,14 +35,15 @@ public class AlbumController {
 //            model.addAttribute("albums", albums);
 //        return "albums";
 //    }
-@GetMapping("/albums")
-public String albums(Model model){
 
 
-    List<Album> albums = albumRepository.findAll();
-    model.addAttribute("albums", albums);
-    return "albums";
-}
+    @GetMapping("/albums")
+    public String albums(Model model){
+
+        List<Album> albums = albumRepository.findAll();
+        model.addAttribute("albums", albums);
+        return "albums";
+    }
 
     @PostMapping("/add/album")
     public RedirectView postAlbum(@RequestParam String title,
@@ -53,13 +56,18 @@ public String albums(Model model){
         return new RedirectView("/albums");
     }
 
-
+    @GetMapping("/albums/{id}/songs")
+    public String viewAlbumSongs(@PathVariable Long id, Model model){
+        Album album = albumRepository.findById(id).orElseThrow();
+        model.addAttribute("songs", album.getSongs());
+        model.addAttribute("album", album);
+        return "albumsongs";
+    }
 
     @GetMapping("albums/{id}")
     public ResponseEntity<Album> getOneAlbum(@PathVariable Long id){
         Album returnedAlbum = albumRepository.findById(id).orElseThrow();
         return new ResponseEntity<>(returnedAlbum, HttpStatus.OK);
     }
-
 
 }

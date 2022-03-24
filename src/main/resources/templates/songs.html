@@ -2,10 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to my first Spring web app</title>
+  <title>Title</title>
   <link th:href="@{/css/styles.css}" rel="stylesheet">
-
-
 </head>
 <body>
 <ul>
@@ -13,8 +11,15 @@
   <li><a href="/albums">Albums</a></li>
   <li><a href="/upperCase/hello">Capitalize</a></li>
   <li><a href="/songs">Songs</a></li>
-  <li  class="hello" style="float:right"><a href="/hello">Hello</a></li>
+  <li class="hello" style="float:right"><a href="/hello">Hello</a></li>
 </ul>
-<h1 style="text-align: center; margin: 60px;">This Website Display Hashem's Favourite Ablums</h1>
+
+<div>
+  <div th:each="obj : ${songs}" >
+    <p th:text="${obj.getTitle()}"></p>
+    <p th:text="${obj.length}"></p>
+    <p th:text="${obj.trackNumber}"></p>
+  </div>
+</div>
 </body>
 </html>
