@@ -29,12 +29,12 @@
 <div>
     <h1>Add New Album</h1>
 <form th:action="@{/add/album}"  method="POST">
-    <p>Title: <input type="text" name="title"/></p>
-    <p>Artist: <input type="text" name="artist"/></p>
-    <p>Song Count: <input type="number" name="songCount"/></p>
-    <p>Album Length: <input type="number" name="length"/></p>
-    <p>Image URL: <input type="text"name="imageUrl"/></p>
-    <p><input type="submit" value="Submit"/></p>
+    <p>Title: <input type="text" name="title" required/></p>
+    <p>Artist: <input type="text" name="artist" required/></p>
+    <p>Song Count: <input type="number" name="songCount" required/></p>
+    <p>Album Length: <input type="number" name="length" required/></p>
+    <p>Image URL: <input type="text"name="imageUrl" required/></p>
+    <p><input type="submit" value="Submit" required/></p>
 </form>
 </div>
 </body>
